@@ -1,7 +1,4 @@
-Nice choice 👍 A clean README really levels up a GitHub project.
-Here’s a **ready-to-use README.md** for a **Voice Assistant project** — you can copy-paste and tweak names/features as needed.
 
----
 
 # 🎙️ Voice Assistant
 
