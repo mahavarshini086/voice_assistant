@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Assistant</title>
+    <style>
+        /* --- General Styling (Dark/Futuristic Theme) --- */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0b0f19; /* Very dark background */
+            color: #ffffff; /* Light text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            /* Background pattern for futuristic look (similar to the image) */
+            background-image: 
+                radial-gradient(circle at 50% 50%, rgba(30, 144, 255, 0.1) 0%, transparent 80%),
+                repeating-linear-gradient(0deg, rgba(30, 144, 255, 0.03) 0px, rgba(30, 144, 255, 0.03) 1px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(90deg, rgba(30, 144, 255, 0.03) 0px, rgba(30, 144, 255, 0.03) 1px, transparent 1px, transparent 40px);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff; /* Neon glow effect */
+        }
+
+        /* --- Chat Window Container (The Main Box) --- */
+        #main-container {
+            width: 90%;
+            max-width: 700px;
+            padding: 30px;
+            background-color: rgba(10, 15, 30, 0.8); /* Semi-transparent dark box */
+            border: 2px solid #1e90ff; /* Blue border */
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(30, 144, 255, 0.5); /* Stronger glow around the main box */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* --- Chat Messages Area --- */
+        #chat-window {
+            width: 100%;
+            height: 350px;
+            padding: 15px;
+            margin-bottom: 25px;
+            overflow-y: scroll;
+            background-color: rgba(255, 255, 255, 0.05); /* Very slight transparency for depth */
+            border: 1px solid #1e90ff44; /* Faint inner border */
+            border-radius: 8px;
+        }
+        /* Hide scrollbar but allow scrolling */
+        #chat-window::-webkit-scrollbar { width: 0; }
+        #chat-window { -ms-overflow-style: none; scrollbar-width: none; } 
+
+        .message {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            max-width: 80%;
+            position: relative;
+            font-size: 0.95em;
+        }
+
+        .user {
+            background-color: #00bfff; /* Bright blue for user */
+            color: #0b0f19; /* Dark text on bright bubble */
+            align-self: flex-end;
+            margin-left: auto;
+            border-top-right-radius: 5px;
+        }
+
+        .ai {
+            background-color: #3cb371; /* Green/Teal for AI */
+            color: #0b0f19;
+            align-self: flex-start;
+            margin-right: auto;
+            border-top-left-radius: 5px;
+        }
+
+        /* --- Microphone Button and Status --- */
+        #mic-icon-container {
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(#1e90ff, #007bff);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(30, 144, 255, 0.8);
+            margin-bottom: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        #mic-icon-container:hover {
+            box-shadow: 0 0 30px #00FFFF, 0 0 5px #00FFFF; /* Aqua glow on hover */
+        }
+        .recording-pulse {
+            animation: pulse-ring 1.5s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(30, 144, 255, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(30, 144, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(30, 144, 255, 0); }
+        }
+
+        #mic-icon {
+            font-size: 48px;
+            color: #0b0f19;
+            /* Using a simple text icon, but you can replace this with an SVG/Image */
+        }
+        
+        #mic-button { 
+            /* Hidden - we use the icon container above for the click target */
+            display: none; 
+        }
+
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #00ffff; /* Cyan color for status */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>Voice Assistant</h1>
+    
+    <div id="main-container">
+        <div id="chat-window">
+            </div>
+        
+        <div id="mic-icon-container">
+            <span id="mic-icon">🎤</span>
+        </div>
+        
+        <button id="mic-button">Start Speaking</button>
+    </div>
+
+    <p id="status">Click the microphone to start the conversation.</p>
+
+    <script src="script.js"></script>
+</body>
+</html>
